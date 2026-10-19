@@ -4,7 +4,7 @@ from django.db import models
 class SiteConfiguration(models.Model):
     phone = models.CharField(max_length=20, default="9207666712")
     email = models.EmailField(default="vandmarkconcepts@gmail.com")
-    website = models.CharField(max_length=100, default="vandmark.com")
+    website = models.CharField(max_length=200, default="https://vandmark.com/")
     instagram_url = models.URLField(
         default="https://www.instagram.com/vandmark_communications?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw=="
     )

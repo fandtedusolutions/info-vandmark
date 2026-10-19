@@ -1,18 +1,28 @@
-/* ---- Edit contact links here ---- */
-const VM = {
+/* ---- Dynamic Django Context & Links ---- */
+let DJ_DATA = {};
+try {
+  const dataEl = document.getElementById("django-data");
+  if (dataEl) DJ_DATA = JSON.parse(dataEl.textContent);
+} catch (e) {
+  console.warn("Could not parse django-data", e);
+}
+
+const VM = Object.assign({
   phone: "9207666712",
-  email: "vandmarkconcepts@gmail.com",        // e.g. "hello@yourdomain.com"
-  website: "vandmark.com",      // e.g. "https://yourdomain.com"
+  email: "vandmarkconcepts@gmail.com",
+  website: "vandmark.com",
   instagram: "https://www.instagram.com/vandmark_communications?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==",
   facebook: "https://www.facebook.com/vandmarkcommunicationsllp/",
   linkedin: "https://www.linkedin.com/company/vandmark/home/",
-  youtube: "https://www.youtube.com/@vandmarkcommunications"
-};
-const EVENTS = [
+  youtube: "https://www.youtube.com/@vandmarkcommunications",
+  whatsapp_workshop: "Hi Vandmark! I attended your photography workshop and would like to know more.",
+  whatsapp_project: "Hi Vandmark! I'd like to start a project with you."
+}, DJ_DATA.vm || {});
+
+const EVENTS = (DJ_DATA.events && DJ_DATA.events.length) ? DJ_DATA.events : [
   { name: "Plus Three", caption: "Event media & coverage", video: "Video-44962.mp4", tone: "a", glyph: "T" },
   { name: "Eyecon", caption: "Event media & coverage", video: "Video-17634.mp4", tone: "b", glyph: "E" },
-    { name: "Tukuja", caption: "Event media & coverage", video: "Video-40555.mp4", tone: "b", glyph: "E" },
-
+  { name: "Tukuja", caption: "Event media & coverage", video: "Video-40555.mp4", tone: "b", glyph: "E" },
   { name: "Your Moments Could Be Next.", caption: "Conferences, fests & corporate events", tone: "c", glyph: "+" }
 ];
 
@@ -20,8 +30,8 @@ function resolveVideoPath(video) {
   if (typeof video !== "string") return "";
   const value = video.trim();
   if (!value) return "";
-  if (/^(https?:)?\/\//i.test(value) || value.startsWith("data:")) return value;
-  return value;
+  if (/^(https?:)?\/\//i.test(value) || value.startsWith("data:") || value.startsWith("/")) return value;
+  return "/static/videos/" + value;
 }
 
 /* ---------- characters (original SVG) ---------- */
@@ -93,10 +103,11 @@ put("mascot-slot", mascot); put("clap-slot", clapper); put("roll-slot", roll); p
 const wa = (t) => "https://wa.me/91" + VM.phone + "?text=" + encodeURIComponent(t);
 const links = {
   call: "tel:+91" + VM.phone,
-  whatsapp: wa("Hi Vandmark! I attended your photography workshop and would like to know more."),
-  project: wa("Hi Vandmark! I'd like to start a project with you."),
+  whatsapp: wa(VM.whatsapp_workshop || "Hi Vandmark! I attended your photography workshop and would like to know more."),
+  project: wa(VM.whatsapp_project || "Hi Vandmark! I'd like to start a project with you."),
   email: VM.email ? "mailto:" + VM.email : "",
-  website: VM.website, instagram: VM.instagram, facebook: VM.facebook, linkedin: VM.linkedin, youtube: VM.youtube
+  website: VM.website ? (VM.website.startsWith("http") ? VM.website : "https://" + VM.website) : "https://vandmark.com/",
+  instagram: VM.instagram, facebook: VM.facebook, linkedin: VM.linkedin, youtube: VM.youtube
 };
 if (VM.email) document.getElementById("qk-email").textContent = VM.email;
 const toast = (m) => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2200); };
@@ -135,13 +146,14 @@ fill("t2", ["Photography", "Videography", "Branding", "Event Coverage", "Social 
     photo: '<path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/>'
   };
   /* [title, icon, big background word] */
-  const data = [
+  const defaultServices = [
     ["Graphic Design", "design", "DESIGN"], ["Videography", "cam", "CINEMA"], ["Video Editing", "edit", "EDIT"],
     ["Poster Design", "poster", "POSTER"], ["Web & App Development", "code", "CODE"], ["Vertical Branding", "layers", "VERTICAL"],
     ["Events", "event", "EVENTS"], ["Influence & Attraction Marketing", "magnet", "INFLUENCE"], ["Live Broadcast Solutions", "live", "LIVE"],
     ["Content Creation & Blogging", "blog", "CONTENT"], ["Branding", "brand", "BRAND"], ["SEO Optimization", "seo", "SEO"],
     ["Digital Marketing", "digi", "DIGITAL"], ["Creative Video Production", "film", "PRODUCTION"], ["Product Photography", "photo", "PRODUCT"]
   ];
+  const data = (DJ_DATA.services && DJ_DATA.services.length) ? DJ_DATA.services : defaultServices;
 
   const $ = id => document.getElementById(id);
   const stageEl = $("svStage"), word = $("svWord"), cur = $("svCur"), bar = $("svBar");
@@ -154,7 +166,7 @@ fill("t2", ["Photography", "Videography", "Branding", "Event Coverage", "Social 
       <div class="sv-art"></div>
       <div class="sv-in">
         <div class="sv-top mono"><b>${String(i + 1).padStart(2, "0")}</b><span>VANDMARK</span></div>
-        <div class="sv-icon"><svg viewBox="0 0 24 24" aria-hidden="true">${ic[d[1]]}</svg></div>
+        <div class="sv-icon"><svg viewBox="0 0 24 24" aria-hidden="true">${ic[d[1]] || ic.design}</svg></div>
         <div><h3>${d[0]}</h3><div class="sv-go" aria-hidden="true">→</div></div>
       </div>
     </article>`).join("");

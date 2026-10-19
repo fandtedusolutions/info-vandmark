@@ -106,7 +106,8 @@ const links = {
   whatsapp: wa(VM.whatsapp_workshop || "Hi Vandmark! I attended your photography workshop and would like to know more."),
   project: wa(VM.whatsapp_project || "Hi Vandmark! I'd like to start a project with you."),
   email: VM.email ? "mailto:" + VM.email : "",
-  website: VM.website, instagram: VM.instagram, facebook: VM.facebook, linkedin: VM.linkedin, youtube: VM.youtube
+  website: VM.website ? (VM.website.startsWith("http") ? VM.website : "https://" + VM.website) : "https://vandmark.com/",
+  instagram: VM.instagram, facebook: VM.facebook, linkedin: VM.linkedin, youtube: VM.youtube
 };
 if (VM.email) document.getElementById("qk-email").textContent = VM.email;
 const toast = (m) => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2200); };
