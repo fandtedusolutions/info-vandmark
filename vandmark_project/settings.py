@@ -7,9 +7,12 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Quick-start development settings - unsuitable for production
+import os
+
 SECRET_KEY = 'django-insecure-6!upt_z!xa^@3jg0j$q2_!!l3yxp2l4win%v31ce_y0ivv_cs-'
 
-DEBUG = True
+# Set DEBUG to False for production (can be overridden with DJANGO_DEBUG=True)
+DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('true', '1')
 
 ALLOWED_HOSTS = ['info.vandmark.com', 'localhost', '127.0.0.1', '*']
 
@@ -32,6 +35,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -101,3 +105,12 @@ MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+STORAGES = {
+    "default": {
+        "BACKEND": "django.core.files.storage.FileSystemStorage",
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedStaticFilesStorage",
+    },
+}

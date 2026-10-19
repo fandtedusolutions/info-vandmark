@@ -38,6 +38,15 @@ class SiteConfiguration(models.Model):
         obj, created = cls.objects.get_or_create(id=1)
         return obj
 
+    @property
+    def website_url(self):
+        val = (self.website or "").strip()
+        if not val:
+            return "https://vandmark.com/"
+        if not val.startswith("http://") and not val.startswith("https://"):
+            return f"https://{val}"
+        return val
+
 
 class Service(models.Model):
     title = models.CharField(max_length=100)
