@@ -1,0 +1,54 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>{% block title %}Vandmark Communication LLP{% endblock %}</title>
+  <meta name="description"
+    content="{% block meta_description %}Vandmark Communication LLP: design, development and digital studio. Kochi | Calicut | Malappuram.{% endblock %}">
+  <meta name="theme-color" content="#f2452a">
+  <link rel="icon" href="{% static 'assets/vandmark-logo.png' %}">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Anton&family=Archivo:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@500;600&family=Permanent+Marker&display=swap">
+  <link rel="stylesheet" href="{% static 'style.css' %}">
+  {% block extra_head %}{% endblock %}
+</head>
+
+<body>
+  <div class="shutter" id="shutter" aria-hidden="true"><i></i><i></i><b></b><span>VANDMARK</span></div>
+
+  <header class="nav">
+    <div class="in">
+      <a href="#top" aria-label="Vandmark home"><img src="{% static 'assets/vandmark-logo.png' %}" alt="Vandmark"></a>
+      <ul>
+        <li><a href="#reach">Contact</a></li>
+        <li><a href="#services">Services</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#follow">Follow</a></li>
+      </ul>
+      <a class="btn o" data-link="whatsapp">Let's talk</a>
+    </div>
+  </header>
+
+  {% block content %}{% endblock %}
+
+  <footer>
+    <div class="wm" aria-hidden="true">Vandmark</div>
+    <div class="in fb mono"><img src="{% static 'assets/vandmark-logo.png' %}" alt="Vandmark"><span>© Vandmark Communication LLP</span>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status"></div>
+
+  <!-- Dynamic Django Data Payload -->
+  <script id="django-data" type="application/json">{{ frontend_data_json|safe }}</script>
+
+  <script src="{% static 'script.js' %}"></script>
+  {% block extra_js %}{% endblock %}
+</body>
+
+</html>

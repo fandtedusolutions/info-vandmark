@@ -1,0 +1,245 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Vandmark Communication LLP | Design, Development & Digital Studio{% endblock %}
+
+{% block content %}
+<main id="top">
+  <!-- HERO -->
+  <section class="hero ld">
+    <div class="in">
+      <div class="hero-l">
+        <h1><span>We frame</span><span class="t1">your brand</span><span class="t2">brilliantly.</span></h1>
+        <div class="scribble">say cheese! <svg viewBox="0 0 60 30">
+            <path d="M4 22 C 18 4, 34 4, 40 16 S 52 26, 56 8" />
+          </svg></div>
+        <p class="lede"><strong>Vandmark Communication LLP</strong> is a design, development and digital studio. Glad
+          you joined the workshop. Save our details and reach out when you have something to create.</p>
+      </div>
+
+      <div class="stage" id="stage">
+        <div class="vf layer" data-depth="6">
+          <div class="vf-scr"><canvas id="ap"></canvas></div>
+          <i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+          <div class="rd top"><span class="rec">REC</span><span><span class="fval" id="fval">f/2.8</span> ·
+              1/250</span></div>
+          <div class="rd bot"><span>ISO 200 · 4K</span></div>
+        </div>
+        <div class="layer l-roll" data-depth="22" aria-hidden="true">
+          <div class="roll-slot"></div>
+        </div>
+        <div class="layer l-drone" data-depth="30" aria-hidden="true">
+          <div class="drone-slot"></div>
+        </div>
+        <div class="layer l-clap" data-depth="18" aria-hidden="true">
+          <div class="clap-slot"></div>
+        </div>
+        <div class="layer l-pola" data-depth="26" aria-hidden="true">
+          <div class="pola-slot"></div>
+        </div>
+        <div class="layer l-mascot" data-depth="12" aria-hidden="true">
+          <div class="mascot-slot"></div>
+        </div>
+        <div class="stamp" aria-hidden="true">
+          <svg viewBox="0 0 150 150">
+            <defs>
+              <path id="circ" d="M75,75 m-56,0 a56,56 0 1,1 112,0 a56,56 0 1,1 -112,0" />
+            </defs>
+            <circle cx="75" cy="75" r="40" fill="#FFEC00" stroke="#0F0E0D" stroke-width="3" />
+            <text>
+              <textPath href="#circ">VANDMARK ✶ VANDMARK ✶ VANDMARK ✶ </textPath>
+            </text>
+            <text x="75" y="85" text-anchor="middle"
+              style="font:400 28px Anton, Impact, sans-serif;letter-spacing:0;fill:#0F0E0D">V</text>
+          </svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- DARKROOM CONTACT -->
+  <section class="darkroom" id="reach">
+    <div class="safelight" aria-hidden="true"></div>
+    <div class="in">
+      <div class="dr-head">
+        <span class="kicker mono">Fresh from the darkroom</span>
+        <h2>Pick a print, <span class="hl">reach us</span></h2>
+        <p>Four ways to get in touch, hung up to dry. Tap any photo.</p>
+      </div>
+      <div class="lines">
+        <div class="line">
+          <svg class="string" viewBox="0 0 100 44" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 6 Q 50 34 100 6" />
+          </svg>
+          <a class="pol" data-link="call" style="--t:-4deg;--d:0s"><span class="peg"></span><span class="pol-in">
+              <span class="photo" style="--pc:var(--orange)"><svg viewBox="0 0 120 110" aria-hidden="true">
+                  <g class="sc-phone">
+                    <path
+                      d="M38 26c-7 0-10 6-10 9 0 24 23 47 47 47 3 0 9-3 9-10l-1-7c0-3-3-5-6-5l-12 3c-2 1-4 3-5 5-10-5-17-12-22-22 2-1 4-3 5-5l3-12c0-3-2-6-5-6z"
+                      fill="#0F0E0D" />
+                  </g>
+                  <path class="sc-wave" d="M80 20a18 18 0 0 1 18 18" stroke="#0F0E0D" stroke-width="5" fill="none"
+                    stroke-linecap="round" />
+                  <path class="sc-wave w2" d="M82 6a32 32 0 0 1 30 30" stroke="#0F0E0D" stroke-width="5" fill="none"
+                    stroke-linecap="round" />
+                </svg></span>
+              <span class="pcap">Call us</span><span class="psub">+91 {{ config.phone }}</span></span><span
+              class="tap">TAP</span></a>
+          <a class="pol" data-link="whatsapp" style="--t:3deg;--d:.6s"><span class="peg"></span><span class="pol-in">
+              <span class="photo" style="--pc:var(--pink)"><svg viewBox="0 0 120 110" aria-hidden="true">
+                  <g class="sc-bub">
+                    <path
+                      d="M22 18h76a12 12 0 0 1 12 12v36a12 12 0 0 1-12 12H46l-20 16 4-16h-8a12 12 0 0 1-12-12V30a12 12 0 0 1 12-12z"
+                      fill="#FFF7EC" stroke="#0F0E0D" stroke-width="4" stroke-linejoin="round" />
+                    <circle class="sc-dot" cx="40" cy="48" r="7" fill="#0F0E0D" />
+                    <circle class="sc-dot d2" cx="60" cy="48" r="7" fill="#0F0E0D" />
+                    <circle class="sc-dot d3" cx="80" cy="48" r="7" fill="#0F0E0D" />
+                  </g>
+                </svg></span>
+              <span class="pcap">WhatsApp</span><span class="psub">Chat with us</span></span><span
+              class="tap">TAP</span></a>
+        </div>
+        <div class="line">
+          <svg class="string" viewBox="0 0 100 44" preserveAspectRatio="none" aria-hidden="true">
+            <path d="M0 6 Q 50 34 100 6" />
+          </svg>
+          <a class="pol" data-link="email" style="--t:-3deg;--d:.3s"><span class="peg"></span><span class="pol-in">
+              <span class="photo" style="--pc:var(--orange)"><svg viewBox="0 0 120 110" aria-hidden="true">
+                  <path class="sc-heart" d="M60 38c-6-10-20-6-18 4 2 8 18 16 18 16s16-8 18-16c2-10-12-14-18-4z"
+                    fill="#FF6FA5" stroke="#0F0E0D" stroke-width="3" />
+                  <rect x="18" y="46" width="84" height="54" rx="6" fill="#FFF7EC" stroke="#0F0E0D"
+                    stroke-width="4" />
+                  <g class="sc-letter">
+                    <rect x="30" y="34" width="60" height="44" rx="3" fill="#fff" stroke="#0F0E0D" stroke-width="3" />
+                    <path d="M38 46h44M38 56h30" stroke="#0F0E0D" stroke-width="3" stroke-linecap="round" />
+                  </g>
+                  <path d="M18 60l42 26 42-26v34a6 6 0 0 1-6 6H24a6 6 0 0 1-6-6z" fill="#FFF7EC" stroke="#0F0E0D"
+                    stroke-width="4" stroke-linejoin="round" />
+                </svg></span>
+              <span class="pcap">Email</span><span class="psub"
+                id="qk-email">{{ config.email }}</span></span><span class="tap">TAP</span></a>
+          <a class="pol" data-link="website" style="--t:4deg;--d:.9s"><span class="peg"></span><span class="pol-in">
+              <span class="photo" style="--pc:var(--pink)"><svg viewBox="0 0 120 110" aria-hidden="true">
+                  <rect x="12" y="16" width="96" height="76" rx="8" fill="#FFF7EC" stroke="#0F0E0D"
+                    stroke-width="4" />
+                  <path d="M12 32h96" stroke="#0F0E0D" stroke-width="4" />
+                  <circle cx="22" cy="24" r="3" fill="#FF7A00" />
+                  <circle cx="32" cy="24" r="3" fill="#FFEC00" />
+                  <circle cx="42" cy="24" r="3" fill="#21ECE6" />
+                  <rect x="24" y="44" width="40" height="8" rx="4" fill="#0F0E0D" />
+                  <rect x="24" y="58" width="72" height="6" rx="3" fill="#D9D0C4" />
+                  <rect class="sc-load" x="24" y="72" width="72" height="10" rx="5" fill="#FF7A00" />
+                  <g class="sc-cursor">
+                    <path d="M62 60l0 24 7-6 5 11 5-2-5-11 9-1z" fill="#0F0E0D" stroke="#FFF7EC" stroke-width="2"
+                      stroke-linejoin="round" />
+                  </g>
+                </svg></span>
+              <span class="pcap">Website</span><span class="psub">{{ config.website }}</span></span><span
+              class="tap">TAP</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="tapes" aria-hidden="true">
+    <div class="band c">
+      <div class="track" id="t2"></div>
+    </div>
+    <div class="band y">
+      <div class="track" id="t1"></div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="sec" id="services">
+    <div class="in">
+      <div class="sh">
+        <h2><span class="kicker mono">What we make</span>Our <span class="o">services</span></h2>
+        <div class="sh-side">
+          <div class="sv-nav">
+            <button type="button" id="svPrev" aria-label="Previous service">←</button>
+            <button type="button" id="svNext" aria-label="Next service">→</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="sv-wrap">
+      <div class="sv-word" id="svWord" aria-hidden="true">DESIGN</div>
+      <div class="sv-stage" id="svStage"></div>
+    </div>
+    <div class="in">
+      <div class="sv-bottom">
+        <div class="sv-count mono"><b id="svCur">01</b>/ <span id="svTot">{{ services_count }}</span></div>
+        <div class="sv-bar"><i id="svBar"></i></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EVENTS -->
+  <section class="sec events" id="events">
+    <div class="in">
+      <div class="sh">
+        <h2><span class="kicker mono">Media &amp; coverage</span>Events <span class="o">we shoot</span></h2>
+        <div class="sh-side">
+          <div class="clap-wrap clap-slot" aria-hidden="true"></div>
+          <p>We capture events end to end: photos, video and same-day content for social.</p>
+        </div>
+      </div>
+    </div>
+    <div class="reel" aria-label="Events we have covered">
+      <div class="rtrack" id="reel"></div>
+    </div>
+    <div class="in">
+      <div class="note"><span class="chip">Conferences</span><span class="chip">College fests</span><span
+          class="chip">Corporate events</span><span class="chip">And many more</span></div>
+    </div>
+  </section>
+
+  <!-- FOLLOW -->
+  <section class="sec" id="follow">
+    <div class="follow-roll roll-slot" aria-hidden="true"></div>
+    <div class="in">
+      <div class="sh">
+        <h2><span class="kicker mono">Stay in the loop</span>Follow <span class="o">us</span></h2>
+        <p>Behind-the-scenes, client work and creative tips. Tap a row to open.</p>
+      </div>
+      <div class="rows">
+        <a class="row" data-link="instagram" style="--rc:var(--grad)"><span class="nm">Instagram</span><span
+            class="end"><span class="hd">Reels &amp; BTS</span><span class="ar">↗</span></span></a>
+        <a class="row" data-link="youtube" style="--rc:var(--yellow)"><span class="nm">YouTube</span><span
+            class="end"><span class="hd">Films &amp; edits</span><span class="ar">↗</span></span></a>
+        <a class="row" data-link="linkedin" style="--rc:var(--cyan)"><span class="nm">LinkedIn</span><span
+            class="end"><span class="hd">Studio news</span><span class="ar">↗</span></span></a>
+        <a class="row" data-link="facebook" style="--rc:var(--grad-r)"><span class="nm">Facebook</span><span
+            class="end"><span class="hd">Updates</span><span class="ar">↗</span></span></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section class="sec contact" id="contact">
+    <div class="in">
+      <div>
+        <span class="kicker mono" style="color:var(--orange-deep)">Your project, our lens</span>
+        <h2>Got an idea?<br><em>Let's shoot.</em></h2>
+        <p class="lede">Branding, a website, an app or full event coverage. Tell us what you have in mind and we will
+          take it from there.</p>
+      </div>
+      <div class="card">
+        <div class="peek mascot-slot" aria-hidden="true"></div>
+        <div class="bubble" aria-hidden="true">Say hi!</div>
+        <div>
+          <span class="mono" style="color:var(--muted)">Call / WhatsApp</span>
+          <div class="num" id="num">{{ config.phone }}</div>
+        </div>
+        <div class="acts">
+          <button class="btn copy" id="copy" type="button">Copy number</button>
+          <a class="btn o" data-link="call">Call now</a>
+        </div>
+        <div class="cities"><span>Kochi</span><span>Calicut</span><span>Malappuram</span></div>
+        <a class="big-cta" data-link="project">Start your project <span class="arw">→</span></a>
+      </div>
+    </div>
+  </section>
+</main>
+{% endblock %}
