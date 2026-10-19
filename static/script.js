@@ -10,7 +10,7 @@ try {
 const VM = Object.assign({
   phone: "9207666712",
   email: "vandmarkconcepts@gmail.com",
-  website: "vandmark.com",
+  website: "https://vandmark.com/",
   instagram: "https://www.instagram.com/vandmark_communications?utm_source=ig_web_button_share_sheet&xtok=ZDNlZDc0MzIxNw==",
   facebook: "https://www.facebook.com/vandmarkcommunicationsllp/",
   linkedin: "https://www.linkedin.com/company/vandmark/home/",
@@ -106,15 +106,28 @@ const links = {
   whatsapp: wa(VM.whatsapp_workshop || "Hi Vandmark! I attended your photography workshop and would like to know more."),
   project: wa(VM.whatsapp_project || "Hi Vandmark! I'd like to start a project with you."),
   email: VM.email ? "mailto:" + VM.email : "",
-  website: VM.website ? (VM.website.startsWith("http") ? VM.website : "https://" + VM.website) : "https://vandmark.com/",
+  website: "https://vandmark.com/",
   instagram: VM.instagram, facebook: VM.facebook, linkedin: VM.linkedin, youtube: VM.youtube
 };
 if (VM.email) document.getElementById("qk-email").textContent = VM.email;
 const toast = (m) => { const t = document.getElementById("toast"); t.textContent = m; t.classList.add("show"); clearTimeout(toast.h); toast.h = setTimeout(() => t.classList.remove("show"), 2200); };
 document.querySelectorAll("[data-link]").forEach(a => {
-  const href = links[a.dataset.link];
-  if (href) { a.href = href; if (href.startsWith("http")) { a.target = "_blank"; a.rel = "noopener"; } }
-  else { a.href = "#"; a.addEventListener("click", e => { e.preventDefault(); toast("Link coming soon"); }); }
+  const linkKey = a.dataset.link;
+  const href = links[linkKey];
+  if (href) {
+    a.href = href;
+    if (href.startsWith("http")) {
+      a.target = "_blank";
+      a.rel = "noopener noreferrer";
+      a.addEventListener("click", (e) => {
+        e.preventDefault();
+        window.open(href, "_blank", "noopener,noreferrer");
+      });
+    }
+  } else {
+    a.href = "#";
+    a.addEventListener("click", e => { e.preventDefault(); toast("Link coming soon"); });
+  }
 });
 document.getElementById("copy").addEventListener("click", async () => {
   try { await navigator.clipboard.writeText(VM.phone); toast("Number copied"); }
