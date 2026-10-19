@@ -1,0 +1,149 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}404 - Out of Frame | Vandmark Communication LLP{% endblock %}
+
+{% block extra_head %}
+<style>
+  .error-hero {
+    min-height: calc(100vh - 160px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 80px 24px;
+    position: relative;
+    overflow: hidden;
+    background: radial-gradient(circle at center, rgba(255, 122, 0, 0.08) 0%, rgba(15, 14, 13, 0.98) 70%);
+  }
+
+  .error-card {
+    max-width: 680px;
+    width: 100%;
+    background: #171614;
+    border: 3px solid #292724;
+    border-radius: 24px;
+    padding: 48px 36px;
+    text-align: center;
+    position: relative;
+    box-shadow: 0 24px 60px rgba(0, 0, 0, 0.6), 0 0 0 1px rgba(255, 247, 236, 0.05);
+  }
+
+  .error-vf {
+    position: relative;
+    margin: 0 auto 28px;
+    width: 140px;
+    height: 140px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #0f0e0d;
+    border-radius: 20px;
+    border: 2px dashed rgba(255, 122, 0, 0.4);
+  }
+
+  .error-code {
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: clamp(72px, 14vw, 120px);
+    line-height: 0.9;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--orange, #FF7A00) 0%, var(--yellow, #FFEC00) 50%, var(--pink, #FF6FA5) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    margin: 12px 0;
+  }
+
+  .error-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 14px;
+    background: rgba(255, 122, 0, 0.12);
+    border: 1px solid rgba(255, 122, 0, 0.35);
+    border-radius: 999px;
+    font-size: 13px;
+    color: var(--orange, #FF7A00);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+  }
+
+  .error-badge::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    background: var(--orange, #FF7A00);
+    border-radius: 50%;
+    animation: blink 1.2s infinite ease-in-out;
+  }
+
+  @keyframes blink {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.7); }
+  }
+
+  .error-title {
+    font-family: 'Anton', Impact, sans-serif;
+    font-size: clamp(28px, 5vw, 42px);
+    color: #FFF7EC;
+    letter-spacing: 1px;
+    margin: 16px 0 12px;
+    text-transform: uppercase;
+  }
+
+  .error-desc {
+    color: #A39B91;
+    font-size: 16px;
+    line-height: 1.6;
+    max-width: 480px;
+    margin: 0 auto 32px;
+  }
+
+  .error-actions {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+  }
+
+  .error-actions .btn {
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .btn.outline {
+    background: transparent;
+    border: 2px solid #292724;
+    color: #FFF7EC;
+  }
+
+  .btn.outline:hover {
+    border-color: var(--orange, #FF7A00);
+    color: var(--orange, #FF7A00);
+  }
+</style>
+{% endblock %}
+
+{% block content %}
+<main class="error-hero">
+  <div class="error-card">
+    <div class="error-badge mono">Frame Not Found</div>
+
+    <div class="error-code">404</div>
+
+    <h1 class="error-title">Out of Focus &amp; Frame</h1>
+
+    <p class="error-desc">
+      The print you are searching for hasn't been developed yet, or was shifted to another darkroom. Let's get you back in frame.
+    </p>
+
+    <div class="error-actions">
+      <a href="{% url 'website:index' %}" class="btn o">
+        ← Back to Studio
+      </a>
+      <a href="{% url 'website:index' %}#contact" class="btn outline">
+        Contact Team
+      </a>
+    </div>
+  </div>
+</main>
+{% endblock %}

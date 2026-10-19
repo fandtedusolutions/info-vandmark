@@ -164,3 +164,32 @@ def submit_inquiry(request):
         return JsonResponse({"status": "success", "message": "Thank you! We have received your inquiry."})
     except Exception as exc:
         return JsonResponse({"status": "error", "message": str(exc)}, status=500)
+
+
+def custom_404_view(request, exception=None):
+    config = SiteConfiguration.get_solo()
+    frontend_data = {
+        "vm": {
+            "phone": config.phone,
+            "email": config.email,
+            "website": config.website,
+            "instagram": config.instagram_url,
+            "facebook": config.facebook_url,
+            "linkedin": config.linkedin_url,
+            "youtube": config.youtube_url,
+            "whatsapp_workshop": config.whatsapp_workshop_message,
+            "whatsapp_project": config.whatsapp_project_message,
+        },
+        "events": [],
+        "services": [],
+    }
+    return render(
+        request,
+        "404.html",
+        {
+            "config": config,
+            "frontend_data_json": json.dumps(frontend_data),
+        },
+        status=404,
+    )
+
