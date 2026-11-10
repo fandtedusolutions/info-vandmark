@@ -353,4 +353,39 @@ if (!reduce && "IntersectionObserver" in window) {
   });
 }
 
+/* ---------- Sahodaya Kalotsavam Event Announcement Popup ---------- */
+(function() {
+  const eventModal = document.getElementById("eventModal");
+  if (!eventModal) return;
+
+  const closeBtn = document.getElementById("eventModalClose");
+  const dismissBtn = document.getElementById("eventModalDismiss");
+
+  function openModal() {
+    eventModal.classList.add("is-open");
+    eventModal.setAttribute("aria-hidden", "false");
+  }
+
+  function closeModal() {
+    eventModal.classList.remove("is-open");
+    eventModal.setAttribute("aria-hidden", "true");
+  }
+
+  if (closeBtn) closeBtn.addEventListener("click", closeModal);
+  if (dismissBtn) dismissBtn.addEventListener("click", closeModal);
+
+  eventModal.addEventListener("click", (e) => {
+    if (e.target === eventModal) closeModal();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && eventModal.classList.contains("is-open")) {
+      closeModal();
+    }
+  });
+
+  // Open modal right as the shutter entrance finishes
+  setTimeout(openModal, 1450);
+})();
+
 
