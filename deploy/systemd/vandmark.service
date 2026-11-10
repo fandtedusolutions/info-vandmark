@@ -5,9 +5,9 @@ After=network.target
 [Service]
 User=ubuntu
 Group=www-data
-WorkingDirectory=/var/www/vandmark-site
+WorkingDirectory=/var/www/info-vandmark
 Environment="DJANGO_DEBUG=False"
-ExecStart=/var/www/vandmark-site/.venv/bin/gunicorn \
+ExecStart=/var/www/info-vandmark/venv/bin/gunicorn \
           --workers 3 \
           --bind 127.0.0.1:8000 \
           --access-logfile /var/log/vandmark/gunicorn.access.log \

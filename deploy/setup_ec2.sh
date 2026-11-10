@@ -7,7 +7,7 @@ set -e
 # ============================================================
 
 DOMAIN="info.vandmark.com"
-APP_DIR="/var/www/vandmark-site"
+APP_DIR="/var/www/info-vandmark"
 LOG_DIR="/var/log/vandmark"
 
 echo "=== 1. Updating system packages ==="
@@ -23,20 +23,20 @@ sudo chown -R ubuntu:www-data "$LOG_DIR"
 sudo chmod -R 775 "$LOG_DIR"
 
 echo "=== 3. Setting up Python virtual environment ==="
-if [ ! -d "$APP_DIR/.venv" ]; then
-    python3 -m venv "$APP_DIR/.venv"
+if [ ! -d "$APP_DIR/venv" ]; then
+    python3 -m venv "$APP_DIR/venv"
 fi
 
-"$APP_DIR/.venv/bin/pip" install --upgrade pip
-"$APP_DIR/.venv/bin/pip" install -r "$APP_DIR/requirements.txt"
+"$APP_DIR/venv/bin/pip" install --upgrade pip
+"$APP_DIR/venv/bin/pip" install -r "$APP_DIR/requirements.txt"
 
 echo "=== 4. Running database migrations and collecting static files ==="
 cd "$APP_DIR"
-"$APP_DIR/.venv/bin/python" manage.py migrate --noinput
-"$APP_DIR/.venv/bin/python" manage.py collectstatic --noinput
+"$APP_DIR/venv/bin/python" manage.py migrate --noinput
+"$APP_DIR/venv/bin/python" manage.py collectstatic --noinput
 
 # Seed initial defaults if fresh database
-"$APP_DIR/.venv/bin/python" manage.py shell -c "from website.views import seed_defaults_if_empty; seed_defaults_if_empty()" || true
+"$APP_DIR/venv/bin/python" manage.py shell -c "from website.views import seed_defaults_if_empty; seed_defaults_if_empty()" || true
 
 echo "=== 5. Installing and starting Systemd service ==="
 sudo cp "$APP_DIR/deploy/systemd/vandmark.service" /etc/systemd/system/vandmark.service

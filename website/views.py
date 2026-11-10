@@ -166,6 +166,38 @@ def submit_inquiry(request):
         return JsonResponse({"status": "error", "message": str(exc)}, status=500)
 
 
+def qr_page(request):
+    config = SiteConfiguration.get_solo()
+    target_url = request.GET.get("url", "").strip()
+    if not target_url:
+        target_url = "https://info.vandmark.com/"
+
+    frontend_data = {
+        "vm": {
+            "phone": config.phone,
+            "email": config.email,
+            "website": config.website,
+            "instagram": config.instagram_url,
+            "facebook": config.facebook_url,
+            "linkedin": config.linkedin_url,
+            "youtube": config.youtube_url,
+            "whatsapp_workshop": config.whatsapp_workshop_message,
+            "whatsapp_project": config.whatsapp_project_message,
+        },
+        "events": [],
+        "services": [],
+    }
+
+    context = {
+        "config": config,
+        "default_url": "https://info.vandmark.com/",
+        "sahodaya_url": "https://info.vandmark.com/sahodaya",
+        "current_url": target_url,
+        "frontend_data_json": json.dumps(frontend_data),
+    }
+    return render(request, "website/qr.html", context)
+
+
 def custom_404_view(request, exception=None):
     config = SiteConfiguration.get_solo()
     frontend_data = {

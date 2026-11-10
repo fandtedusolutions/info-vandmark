@@ -10,7 +10,7 @@ set -e
 SERVER_HOST="$1"
 KEY_PATH="${2:-$HOME/Downloads/VandmarkERP.pem}"
 USER="ubuntu"
-REMOTE_DIR="/var/www/vandmark-site"
+REMOTE_DIR="/var/www/info-vandmark"
 
 if [ -z "$SERVER_HOST" ]; then
     echo "Error: Server IP or hostname is required."

@@ -6,6 +6,8 @@ app_name = "website"
 
 urlpatterns = [
     path("", views.index, name="index"),
+    path("qr", views.qr_page, name="qr_no_slash"),
+    path("qr/", views.qr_page, name="qr"),
     path("404/", views.custom_404_view, name="404"),
     path("api/inquiry/", views.submit_inquiry, name="submit_inquiry"),
     path("sahodaya", lambda r: redirect("https://sahodaya.holygraceacademy.com/")),
