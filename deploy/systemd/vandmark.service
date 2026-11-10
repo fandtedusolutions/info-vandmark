@@ -6,6 +6,7 @@ After=network.target
 User=ubuntu
 Group=www-data
 WorkingDirectory=/var/www/vandmark-site
+Environment="DJANGO_DEBUG=False"
 ExecStart=/var/www/vandmark-site/.venv/bin/gunicorn \
           --workers 3 \
           --bind 127.0.0.1:8000 \

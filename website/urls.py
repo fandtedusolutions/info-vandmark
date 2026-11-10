@@ -8,6 +8,10 @@ urlpatterns = [
     path("", views.index, name="index"),
     path("404/", views.custom_404_view, name="404"),
     path("api/inquiry/", views.submit_inquiry, name="submit_inquiry"),
+    path("sahodaya", lambda r: redirect("https://sahodaya.holygraceacademy.com/")),
+    path("sahodaya/", lambda r: redirect("https://sahodaya.holygraceacademy.com/")),
+    path("today", lambda r: redirect("https://sahodaya.holygraceacademy.com/")),
+    path("today/", lambda r: redirect("https://sahodaya.holygraceacademy.com/")),
     path("vandmark.com", lambda r: redirect("https://vandmark.com/", permanent=True)),
     path("vandmark.com/", lambda r: redirect("https://vandmark.com/", permanent=True)),
 ]

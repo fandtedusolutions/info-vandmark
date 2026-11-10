@@ -11,8 +11,8 @@ import os
 
 SECRET_KEY = 'django-insecure-6!upt_z!xa^@3jg0j$q2_!!l3yxp2l4win%v31ce_y0ivv_cs-'
 
-# Set DEBUG to False for production (can be overridden with DJANGO_DEBUG=True)
-DEBUG = os.environ.get('DJANGO_DEBUG', 'False').lower() in ('true', '1')
+# DEBUG defaults to True for local development; disable in production via DJANGO_DEBUG=False
+DEBUG = os.environ.get('DJANGO_DEBUG', 'True').lower() in ('true', '1')
 
 ALLOWED_HOSTS = ['info.vandmark.com', 'localhost', '127.0.0.1', '*']
 
