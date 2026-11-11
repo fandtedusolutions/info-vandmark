@@ -27,9 +27,9 @@
         <li><a href="#services">Services</a></li>
         <li><a href="#events">Events</a></li>
         <li><a href="#follow">Follow</a></li>
-        <li><a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="nav-live-item"><span class="live-dot" aria-hidden="true"></span>Today's Program: Sahodaya</a></li>
+        <li><a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="nav-live-item" onclick="if(window.openSahodayaModal){event.preventDefault();window.openSahodayaModal();}"><span class="live-dot" aria-hidden="true"></span>Today's Program: Sahodaya</a></li>
       </ul>
-      <a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="nav-mobile-live"><span class="live-dot" aria-hidden="true"></span>Sahodaya</a>
+      <a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="nav-mobile-live" onclick="if(window.openSahodayaModal){event.preventDefault();window.openSahodayaModal();}"><span class="live-dot" aria-hidden="true"></span>Sahodaya</a>
       <a class="btn o" data-link="whatsapp">Let's talk</a>
     </div>
   </header>
@@ -331,7 +331,45 @@
 
   <div class="toast" id="toast" role="status"></div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=2.2"></script>
+  <script>
+    (function () {
+      const modal = document.getElementById("eventModal");
+      if (!modal) return;
+
+      function openModal() {
+        modal.classList.add("is-open");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closeModal() {
+        modal.classList.remove("is-open");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      window.openSahodayaModal = openModal;
+      window.closeSahodayaModal = closeModal;
+
+      const closeBtn = document.getElementById("eventModalClose");
+      const dismissBtn = document.getElementById("eventModalDismiss");
+
+      if (closeBtn) closeBtn.onclick = closeModal;
+      if (dismissBtn) dismissBtn.onclick = closeModal;
+
+      modal.onclick = function (e) {
+        if (e.target === modal) closeModal();
+      };
+
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape" && modal.classList.contains("is-open")) {
+          closeModal();
+        }
+      });
+
+      // Automatically open as soon as site opens
+      setTimeout(openModal, 600);
+    })();
+  </script>
 </body>
 
 </html>

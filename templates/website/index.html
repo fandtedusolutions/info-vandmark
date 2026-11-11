@@ -3,6 +3,251 @@
 
 {% block title %}Vandmark Communication LLP | Design, Development & Digital Studio{% endblock %}
 
+{% block extra_head %}
+<style>
+  /* Self-contained Sahodaya Kalotsavam Event Modal styles */
+  #eventModal.event-modal-backdrop {
+    position: fixed !important;
+    inset: 0 !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 99999 !important;
+    background: rgba(12, 11, 10, 0.88) !important;
+    backdrop-filter: blur(14px) !important;
+    -webkit-backdrop-filter: blur(14px) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 20px !important;
+    box-sizing: border-box !important;
+    opacity: 0 !important;
+    pointer-events: none !important;
+    visibility: hidden !important;
+    transition: opacity 0.35s ease, visibility 0.35s ease !important;
+  }
+
+  #eventModal.event-modal-backdrop.is-open {
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    visibility: visible !important;
+  }
+
+  #eventModal .event-modal-card {
+    position: relative !important;
+    background: #171614 !important;
+    border: 2px solid rgba(241, 142, 16, 0.55) !important;
+    border-radius: 28px !important;
+    padding: 38px 30px 32px !important;
+    max-width: 520px !important;
+    width: 100% !important;
+    text-align: center !important;
+    box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(241, 142, 16, 0.25) !important;
+    transform: scale(0.9) translateY(24px) !important;
+    transition: transform 0.38s cubic-bezier(0.16, 1, 0.3, 1) !important;
+    box-sizing: border-box !important;
+  }
+
+  #eventModal.event-modal-backdrop.is-open .event-modal-card {
+    transform: scale(1) translateY(0) !important;
+  }
+
+  #eventModal .event-modal-close {
+    position: absolute !important;
+    top: 16px !important;
+    right: 18px !important;
+    width: 40px !important;
+    height: 40px !important;
+    border-radius: 50% !important;
+    border: 1px solid rgba(255, 247, 236, 0.2) !important;
+    background: rgba(255, 247, 236, 0.08) !important;
+    color: #FFF7EC !important;
+    font-size: 26px !important;
+    line-height: 1 !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    cursor: pointer !important;
+    transition: all 0.2s ease !important;
+    z-index: 10 !important;
+  }
+
+  #eventModal .event-modal-close:hover {
+    background: #f18e10 !important;
+    border-color: #f18e10 !important;
+    color: #0F0E0D !important;
+    transform: rotate(90deg) scale(1.05) !important;
+  }
+
+  #eventModal .event-modal-pill {
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 8px !important;
+    padding: 6px 18px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 236, 0, 0.12) !important;
+    border: 1px solid rgba(255, 236, 0, 0.4) !important;
+    color: #FFEC00 !important;
+    font: 700 12px 'IBM Plex Mono', monospace !important;
+    letter-spacing: 0.12em !important;
+    text-transform: uppercase !important;
+    margin-bottom: 16px !important;
+  }
+
+  #eventModal .event-modal-pill .pulse-dot {
+    width: 9px !important;
+    height: 9px !important;
+    border-radius: 50% !important;
+    background: #FF2A1A !important;
+    box-shadow: 0 0 10px rgba(255, 42, 26, 1) !important;
+    animation: modalPulse 1.1s steps(2) infinite !important;
+  }
+
+  @keyframes modalPulse {
+    50% { opacity: 0; }
+  }
+
+  #eventModal .event-modal-graphic {
+    margin: 0 auto 16px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+  }
+
+  #eventModal .event-aperture-ring {
+    width: 68px !important;
+    height: 68px !important;
+    border-radius: 50% !important;
+    background: radial-gradient(circle, rgba(241, 142, 16, 0.25) 0%, rgba(15, 14, 13, 0.85) 70%) !important;
+    border: 2px dashed rgba(241, 142, 16, 0.7) !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    animation: modalSpin 20s linear infinite !important;
+  }
+
+  @keyframes modalSpin {
+    to { transform: rotate(360deg); }
+  }
+
+  #eventModal .event-cam-icon {
+    width: 36px !important;
+    height: 36px !important;
+    fill: #FFEC00 !important;
+    filter: drop-shadow(0 2px 8px rgba(241, 142, 16, 0.5)) !important;
+  }
+
+  #eventModal .event-modal-title {
+    font-family: 'Anton', Impact, sans-serif !important;
+    font-size: clamp(32px, 6vw, 46px) !important;
+    line-height: 1.05 !important;
+    letter-spacing: 0.02em !important;
+    text-transform: uppercase !important;
+    margin: 0 0 8px !important;
+    background: linear-gradient(135deg, #FFFFFF 0%, #FFEC00 45%, #f18e10 100%) !important;
+    -webkit-background-clip: text !important;
+    -webkit-text-fill-color: transparent !important;
+    color: #FFEC00 !important;
+  }
+
+  #eventModal .event-modal-kicker {
+    font-family: 'IBM Plex Mono', monospace !important;
+    font-size: 13px !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    color: #B4ACA1 !important;
+    margin: 0 0 16px !important;
+  }
+
+  #eventModal .event-modal-desc {
+    font-size: 15px !important;
+    line-height: 1.55 !important;
+    color: #FFF7EC !important;
+    margin: 0 0 20px !important;
+    opacity: 0.94 !important;
+  }
+
+  #eventModal .event-modal-desc strong {
+    color: #FFEC00 !important;
+  }
+
+  #eventModal .event-modal-meta {
+    display: flex !important;
+    flex-wrap: wrap !important;
+    gap: 8px !important;
+    justify-content: center !important;
+    margin-bottom: 24px !important;
+  }
+
+  #eventModal .event-modal-meta span {
+    font-size: 12px !important;
+    font-weight: 600 !important;
+    padding: 6px 14px !important;
+    border-radius: 999px !important;
+    background: rgba(255, 247, 236, 0.08) !important;
+    border: 1px solid rgba(255, 247, 236, 0.15) !important;
+    color: #B4ACA1 !important;
+  }
+
+  #eventModal .event-modal-actions {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 12px !important;
+  }
+
+  #eventModal .btn-event-primary {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    padding: 16px 24px !important;
+    border-radius: 999px !important;
+    font-size: 16px !important;
+    font-weight: 800 !important;
+    color: #0F0E0D !important;
+    background: linear-gradient(135deg, #f18e10 0%, #FFEC00 100%) !important;
+    text-decoration: none !important;
+    box-shadow: 0 10px 28px rgba(241, 142, 16, 0.45) !important;
+    transition: transform 0.15s, box-shadow 0.15s !important;
+    box-sizing: border-box !important;
+  }
+
+  #eventModal .btn-event-primary:hover {
+    transform: translateY(-2px) !important;
+    box-shadow: 0 14px 34px rgba(241, 142, 16, 0.6) !important;
+  }
+
+  #eventModal .btn-event-secondary {
+    background: transparent !important;
+    border: none !important;
+    color: #B4ACA1 !important;
+    font-family: 'Archivo', sans-serif !important;
+    font-size: 14px !important;
+    font-weight: 600 !important;
+    cursor: pointer !important;
+    padding: 8px !important;
+    transition: color 0.15s !important;
+  }
+
+  #eventModal .btn-event-secondary:hover {
+    color: #FFF7EC !important;
+    text-decoration: underline !important;
+  }
+
+  @media (max-width: 480px) {
+    #eventModal .event-modal-card {
+      padding: 30px 18px 24px !important;
+      border-radius: 22px !important;
+    }
+    #eventModal .event-modal-title {
+      font-size: 28px !important;
+    }
+  }
+</style>
+{% endblock %}
+
 {% block content %}
 <main id="top">
   <!-- HERO -->
@@ -291,4 +536,45 @@
     </div>
   </div>
 </div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+  (function () {
+    const modal = document.getElementById("eventModal");
+    if (!modal) return;
+
+    function openModal() {
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+    }
+
+    function closeModal() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+    }
+
+    window.openSahodayaModal = openModal;
+    window.closeSahodayaModal = closeModal;
+
+    const closeBtn = document.getElementById("eventModalClose");
+    const dismissBtn = document.getElementById("eventModalDismiss");
+
+    if (closeBtn) closeBtn.onclick = closeModal;
+    if (dismissBtn) dismissBtn.onclick = closeModal;
+
+    modal.onclick = function (e) {
+      if (e.target === modal) closeModal();
+    };
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && modal.classList.contains("is-open")) {
+        closeModal();
+      }
+    });
+
+    // Automatically open as soon as site opens (600ms allows shutter to start moving)
+    setTimeout(openModal, 600);
+  })();
+</script>
 {% endblock %}

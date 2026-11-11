@@ -371,6 +371,9 @@ if (!reduce && "IntersectionObserver" in window) {
     eventModal.setAttribute("aria-hidden", "true");
   }
 
+  window.openSahodayaModal = openModal;
+  window.closeSahodayaModal = closeModal;
+
   if (closeBtn) closeBtn.addEventListener("click", closeModal);
   if (dismissBtn) dismissBtn.addEventListener("click", closeModal);
 
@@ -384,8 +387,8 @@ if (!reduce && "IntersectionObserver" in window) {
     }
   });
 
-  // Open modal right as the shutter entrance finishes
-  setTimeout(openModal, 1450);
+  // Open modal right as the shutter entrance starts
+  setTimeout(openModal, 600);
 })();
 
 
