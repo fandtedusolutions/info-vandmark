@@ -312,12 +312,44 @@
 
       <!-- Action Buttons -->
       <div class="event-modal-actions">
-        <a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="btn-event-primary" id="eventModalExplore">
-          <span>Explore Today's Program</span>
-          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
-          </svg>
+        <!-- AI Photo Finder Button with Animated Camera -->
+        <a href="https://photona.weddinghillage.com/my-photos/c4956cbe-377d-41aa-93b7-038b21bcfeee/" target="_blank" rel="noopener noreferrer" class="btn-photo-ai" id="eventModalPhoto">
+          <div class="cam-anim-box" aria-hidden="true">
+            <span class="cam-flash-ray"></span>
+            <svg class="cam-svg" viewBox="0 0 36 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="2" y="7" width="32" height="22" rx="5" fill="#0F0E0D" stroke="#0F0E0D" stroke-width="2"/>
+              <path d="M11 7L13 3H23L25 7H11Z" fill="#0F0E0D"/>
+              <rect x="5" y="10" width="5" height="3.5" rx="1" fill="#FFEC00"/>
+              <circle cx="28" cy="11" r="2.2" fill="#FF2A1A" class="cam-led"/>
+              <circle cx="18" cy="18" r="8" fill="#1D1C1A" stroke="#FFEC00" stroke-width="1.8"/>
+              <circle cx="18" cy="18" r="5" fill="#0F0E0D" class="cam-lens-pupil"/>
+              <circle cx="16" cy="16" r="1.5" fill="#FFFFFF"/>
+              <rect x="6" y="1.5" width="4.5" height="2.5" rx="1" fill="#FF7A00" class="cam-shutter-btn"/>
+            </svg>
+          </div>
+          <div class="btn-photo-label-group">
+            <div class="btn-photo-title">
+              <span>Get Your Photo</span>
+              <span class="btn-ai-pill">AI FACE SEARCH</span>
+            </div>
+            <span class="btn-photo-sub">Find your event photos instantly with AI recognition</span>
+          </div>
+          <div class="btn-photo-arrow" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M5 13h11.86l-5.43 5.43 1.42 1.42L21.14 12l-8.29-8.29-1.42 1.42L16.86 11H5v2z"/>
+            </svg>
+          </div>
         </a>
+
+        <!-- Secondary Program Portal Button -->
+        <a href="https://sahodaya.holygraceacademy.com/" target="_blank" rel="noopener noreferrer" class="btn-event-sub" id="eventModalExplore">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M19 4H5c-1.11 0-2 .9-2 2v12c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H5V8h14v10z"/>
+          </svg>
+          <span>Explore Today's Program & Schedule</span>
+        </a>
+
+        <!-- Dismiss Button -->
         <button type="button" class="btn-event-secondary" id="eventModalDismiss">Continue to Vandmark</button>
       </div>
     </div>
