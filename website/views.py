@@ -192,7 +192,7 @@ def qr_page(request):
         "config": config,
         "default_url": "https://info.vandmark.com/",
         "sahodaya_url": "https://info.vandmark.com/sahodaya",
-        "photona_url": "https://photona.weddinghillage.com/my-photos/c4956cbe-377d-41aa-93b7-038b21bcfeee/",
+        "photona_url": "https://photona.weddinghillage.com/share/8ba6335b-055a-4f3f-afd6-b30a6f03f5c6/search/",
         "current_url": target_url,
         "frontend_data_json": json.dumps(frontend_data),
     }
