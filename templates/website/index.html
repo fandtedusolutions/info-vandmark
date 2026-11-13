@@ -42,6 +42,9 @@
     padding: 38px 30px 32px !important;
     max-width: 520px !important;
     width: 100% !important;
+    max-height: calc(100vh - 32px) !important;
+    max-height: calc(100dvh - 32px) !important;
+    overflow-y: auto !important;
     text-align: center !important;
     box-shadow: 0 28px 70px rgba(0, 0, 0, 0.85), 0 0 50px rgba(241, 142, 16, 0.25) !important;
     transform: scale(0.9) translateY(24px) !important;
@@ -418,23 +421,96 @@
     text-decoration: underline !important;
   }
 
-  @media (max-width: 480px) {
+  @media (max-width: 600px) {
+    #eventModal.event-modal-backdrop {
+      padding: 14px !important;
+      height: 100dvh !important;
+    }
     #eventModal .event-modal-card {
-      padding: 30px 16px 22px !important;
-      border-radius: 22px !important;
+      padding: 20px 15px 16px !important;
+      border-radius: 20px !important;
+      max-width: 380px !important;
+      max-height: calc(100dvh - 28px) !important;
+    }
+    #eventModal .event-modal-close {
+      top: 10px !important;
+      right: 12px !important;
+      width: 32px !important;
+      height: 32px !important;
+      font-size: 20px !important;
+    }
+    #eventModal .event-modal-pill {
+      padding: 4px 12px !important;
+      font-size: 10px !important;
+      margin-bottom: 10px !important;
+    }
+    #eventModal .event-modal-graphic {
+      margin-bottom: 10px !important;
+    }
+    #eventModal .event-aperture-ring {
+      width: 46px !important;
+      height: 46px !important;
+    }
+    #eventModal .event-cam-icon {
+      width: 24px !important;
+      height: 24px !important;
     }
     #eventModal .event-modal-title {
-      font-size: 28px !important;
+      font-size: 24px !important;
+      margin-bottom: 4px !important;
+    }
+    #eventModal .event-modal-kicker {
+      font-size: 10px !important;
+      margin-bottom: 10px !important;
+    }
+    #eventModal .event-modal-desc {
+      font-size: 12.5px !important;
+      line-height: 1.4 !important;
+      margin-bottom: 12px !important;
+    }
+    #eventModal .event-modal-meta {
+      gap: 6px !important;
+      margin-bottom: 14px !important;
+    }
+    #eventModal .event-modal-meta span {
+      font-size: 10.5px !important;
+      padding: 4px 9px !important;
+    }
+    #eventModal .event-modal-actions {
+      gap: 8px !important;
     }
     #eventModal .btn-photo-ai {
-      padding: 13px 14px !important;
+      padding: 10px 12px !important;
       gap: 10px !important;
+      border-radius: 15px !important;
+    }
+    #eventModal .cam-anim-box {
+      width: 34px !important;
+      height: 30px !important;
     }
     #eventModal .btn-photo-title {
-      font-size: 18px !important;
+      font-size: 16px !important;
+      gap: 6px !important;
+    }
+    #eventModal .btn-ai-pill {
+      font-size: 9px !important;
+      padding: 2px 6px !important;
     }
     #eventModal .btn-photo-sub {
-      font-size: 11px !important;
+      font-size: 10.5px !important;
+    }
+    #eventModal .btn-photo-arrow {
+      width: 26px !important;
+      height: 26px !important;
+    }
+    #eventModal .btn-event-sub {
+      padding: 10px 14px !important;
+      font-size: 12.5px !important;
+      gap: 8px !important;
+    }
+    #eventModal .btn-event-secondary {
+      font-size: 12px !important;
+      padding: 4px !important;
     }
   }
 </style>
