@@ -25,6 +25,13 @@ DEFAULT_SERVICES = [
 
 DEFAULT_EVENTS = [
     {
+        "name": "Sahodaya Kalotsavam",
+        "caption": "Central Kerala Sahodaya Youth Festival",
+        "video": "",
+        "tone": "a",
+        "glyph": "S",
+    },
+    {
         "name": "Plus Three",
         "caption": "Event media & coverage",
         "video": "Video-44962.mp4",

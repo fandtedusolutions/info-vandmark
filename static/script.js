@@ -20,6 +20,7 @@ const VM = Object.assign({
 }, DJ_DATA.vm || {});
 
 const EVENTS = (DJ_DATA.events && DJ_DATA.events.length) ? DJ_DATA.events : [
+  { name: "Sahodaya Kalotsavam", caption: "Central Kerala Sahodaya Youth Festival", video: "", tone: "a", glyph: "S" },
   { name: "Plus Three", caption: "Event media & coverage", video: "Video-44962.mp4", tone: "a", glyph: "T" },
   { name: "Eyecon", caption: "Event media & coverage", video: "Video-17634.mp4", tone: "b", glyph: "E" },
   { name: "Tukuja", caption: "Event media & coverage", video: "Video-40555.mp4", tone: "b", glyph: "E" },
